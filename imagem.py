@@ -1,12 +1,18 @@
+# importação das bibliotecas necessárias
+
+# pybrain
 from pybrain.datasets.supervised import SupervisedDataSet 
 from pybrain.tools.shortcuts import buildNetwork
 from pybrain.supervised.trainers import BackpropTrainer
 
+# processamento de imagens
 from PIL import Image
 
+# gráficos 
 import matplotlib.pyplot as plt
 import numpy as np
 
+# função para carregar os dados de treinameto a partir das imagens
 def getDataImage( path):
     #Read image
     img = Image.open( path )
@@ -26,9 +32,11 @@ def getDataImage( path):
     exif_data
     return data
 
+# carregando a primeira imagem
 dataTraining =  getDataImage( 'img\\7b.png' )
 size = 40 * 40 * 3
 
+# configurando a rede neural artificial e o dataSet de treinamento
 network = buildNetwork( size, 12, 12, 4 )  # define network
 dataSet = SupervisedDataSet( size, 4 )     # define dataSet
 
@@ -63,8 +71,8 @@ plt.xlabel('Iterações')
 plt.ylabel('Erro Quadrático')
 plt.show()
 
-
-name = ['11t.png', '16t.png', '22t.png', '6b.png', '6c.png', '6ct.png', '6d.png', '6e.png' ]
+# Fase de teste
+name = ['11t.png', '16t.png', '22t.png' ]
 for i in range( len(name) ):
     path = "img\\test\\" + name[i]
     print ( path )
