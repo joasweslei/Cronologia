@@ -54,9 +54,7 @@ while error > 0.001:
     iteration += 1    
     print ( iteration, error )
 
-#name = 'img\\6ct.png'
-#print ("\nResult: ", name, ": ", net.activate( getDataImage(name) ))
-#print ("\nResult: img\\6d.png: ", net.activate( data3 ))
+
 
 # plot graph
 plt.ioff()
@@ -64,3 +62,12 @@ plt.plot( outputs )
 plt.xlabel('Iterações')
 plt.ylabel('Erro Quadrático')
 plt.show()
+
+
+name = ['11t.png', '16t.png', '22t.png', '6b.png', '6c.png', '6ct.png', '6d.png', '6e.png' ]
+for i in range( len(name) ):
+    path = "img\\test\\" + name[i]
+    print ( path )
+    print ( network.activate( getDataImage( path ) ) )
+
+
